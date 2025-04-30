@@ -1,0 +1,8 @@
+2025-04-30 18:07:54.177349: Pobrano dane pogodowe miasta: Lisbon
+2025-04-30 18:08:10.572912: Pobrano dane pogodowe miasta: Lisbon
+2025-04-30 18:11:13.166291: Pobrano dane pogodowe miasta: Lisbon
+2025-04-30 18:11:34.804253: Pobrano dane pogodowe miasta: Lisbon
+2025-04-30 18:12:18.602558: Pobrano dane pogodowe miasta: Lisbon
+2025-04-30 18:13:18.460278: Wystapil blad HTTPSConnectionPool(host='apiiiii.openweathermap.org', port=443): Max retries exceeded with url: /data/2.5/weather?q=Lisbon&appid=www (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000023E9D553ED0>: Failed to resolve 'apiiiii.openweathermap.org' ([Errno 11001] getaddrinfo failed)")) podczas pobierania danych dla miasta: Lisbon
+2025-04-30 18:13:34.171418: Wystapil blad 'name' podczas pobierania danych dla miasta: Lisbon
+2025-04-30 18:14:01.031594: Pobrano dane pogodowe miasta: Lisbon
