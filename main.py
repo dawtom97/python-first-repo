@@ -1,20 +1,29 @@
-
-
-import os
-from dotenv import load_dotenv
+import time
 from services.fetch_weather import fetch_weather
-from services.txt_file import create_log
+from services.txt_file import create_log, logs_read
+from services.excel_file import save_to_excel
 from datetime import datetime
-load_dotenv()
+from config import Config
 
-API_KEY = os.environ.get("API_KEY")
-CITY = os.environ.get("CITY")
+def start():
+    weather = fetch_weather(Config.API_KEY, Config.CITY)
+    create_log(
+        Config.LOG_FILENAME,
+        f"{datetime.now()}: Pobrano dane pogodowe miasta: {Config.CITY}\n"
+    )
+    logs_read(Config.LOG_FILENAME)
+    save_to_excel(Config.EXCEL_FILENAME, weather)
 
-try:
-    weather = fetch_weather(API_KEY, CITY)
-    create_log(f"{datetime.now()}: Pobrano dane pogodowe miasta: {CITY}\n")
-    print(weather)
 
-except Exception as e:
-    print(e)
-    create_log(f"{datetime.now()}: Wystapil blad {e} podczas pobierania danych dla miasta: {CITY}\n")
+while True:
+    try:
+        start()
+        print("Pobrano dane")
+    except Exception as e:
+        print(e)
+        create_log(
+            Config.LOG_FILENAME,
+            f"{datetime.now()}: Wystapil blad {e} podczas pobierania danych dla miasta: {Config.CITY}\n"
+        )
+    time.sleep(5)
+
